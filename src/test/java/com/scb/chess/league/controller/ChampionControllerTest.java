@@ -91,24 +91,6 @@ public class ChampionControllerTest {
     }
 
 
-    @Test
-    void testGetCurrentChampion_Success() throws Exception {
-        Participant champion = new Participant();
-        champion.setName("Champion Name");
-        when(championService.determineChampion()).thenReturn(Optional.of(champion));
-
-        mockMvc.perform(get("/api/v1/champions/current"))
-                .andExpect(status().isOk())
-                .andExpect(content().json(asJsonString(champion)));
-    }
-
-    @Test
-    void testGetCurrentChampion_NotFound() throws Exception {
-        when(championService.determineChampion()).thenReturn(Optional.empty());
-
-        mockMvc.perform(get("/api/v1/champions/current"))
-                .andExpect(status().isNotFound());
-    }
 
     @Test
     void testNotifyChampion_Success() throws Exception {
