@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class MatchService {
@@ -28,6 +29,11 @@ public class MatchService {
     public List<Match> getAllMatches() {
         return matchRepository.findAll();
     }
+
+    public Optional<Match> getMatchById(Long id) {
+        return matchRepository.findById(id);
+    }
+
 
     public Match saveMatch(MatchDTO matchDTO) {
         Match match = new Match();

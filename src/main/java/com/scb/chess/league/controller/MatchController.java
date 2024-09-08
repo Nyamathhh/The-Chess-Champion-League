@@ -56,6 +56,20 @@ public class MatchController {
     }
 
 
+    @GetMapping("/{id}")
+    public ResponseEntity<MatchDTO> getMatchById(@PathVariable Long id) {
+        Match match = matchService.getMatchById(id).get();
+        MatchDTO matchDTO = MatchDTO.builder()
+                .id(match.getId())
+                .participant1Name(match.getParticipant1().getName())
+                .participant2Name(match.getParticipant2().getName())
+                .winnerName(match.getWinner().getName())
+                .matchDate(match.getMatchDate())
+                .leagueName(match.getLeague().getName())
+                .build();
+        return ResponseEntity.ok(matchDTO);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<MatchDTO> updateMatch(@PathVariable Long id, @RequestBody MatchDTO matchDTO) {
         if (matchDTO.getParticipant1Name().equals(matchDTO.getParticipant2Name())) {

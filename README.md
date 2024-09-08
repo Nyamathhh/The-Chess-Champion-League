@@ -80,7 +80,7 @@ The project is structured into several components:
     
 ###### Swagger UI: http://localhost:8080/swagger-ui/index.html#/
 
-![Swagger](./images/swagger.png)
+_![Swagger](./images/swagger.png)_
 
 ![Matches-API](./images/Matches-API.png)
 
